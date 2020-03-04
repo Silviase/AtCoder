@@ -1,10 +1,18 @@
 package Library;
 
 public class Pair {
-    public int x, y;
+    public long x, y;
 
-    public Pair(int x, int y) {
+    public Pair(long x, long y) {
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public String toString() {
+        return "Pair{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }
