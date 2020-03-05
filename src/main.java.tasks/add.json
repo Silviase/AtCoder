@@ -1,0 +1,44 @@
+{
+  "name" : "add",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "1 2",
+    "output" : "0",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "4 18\n",
+    "output" : "-1",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "21 16\n",
+    "output" : "150",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main.java.tasks",
+  "vmArgs" : "-Xmx1024M",
+  "mainClass" : "Main",
+  "taskClass" : "main.java.tasks.add",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2020.03.05",
+  "contestName" : "yukicoder",
+  "truncate" : true,
+  "inputClass" : "java.util.Scanner",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

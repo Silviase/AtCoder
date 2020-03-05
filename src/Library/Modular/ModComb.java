@@ -1,17 +1,18 @@
 package Library.Modular;
 
 public class ModComb {
-    int size;
-    ModInt[] fac;
-    ModInt[] inv;
+    private int size;
+    private ModInt[] fac;
+    private ModInt[] inv;
 
     public ModComb(int n) {
         size = n;
         fac = new ModInt[n + 1];
         inv = new ModInt[n + 1];
+        makeFac();
     }
 
-    public void makeFac() {
+    private void makeFac() {
         for (int i = 0; i <= size; i++) {
             if (i == 0) {
                 fac[i] = new ModInt(1);

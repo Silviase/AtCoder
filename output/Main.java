@@ -2,10 +2,7 @@ import java.io.OutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Comparator;
-import java.util.ArrayList;
 
 /**
  * Built using CHelper plug-in
@@ -19,80 +16,51 @@ public class Main {
         OutputStream outputStream = System.out;
         Scanner in = new Scanner(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
-        FSilverFoxVsMonster solver = new FSilverFoxVsMonster();
+        add solver = new add();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class FSilverFoxVsMonster {
+    static class add {
         public void solve(int testNumber, Scanner in, PrintWriter out) {
-
-            int n = in.nextInt();
-            long range = in.nextInt();
-            long atk = in.nextInt();
-            long[] point = new long[n];
-            long[] health = new long[n];
-            ArrayList<Pair> ph = new ArrayList<>();
-            long ans = 0;
-            for (int i = 0; i < n; i++) {
-                ph.add(new Pair(in.nextInt(), in.nextInt()));
-            }
-            ph.sort(Comparator.comparing(i -> i.x));
-
-            // out.println(ph.toString());
-
-
-            long[] accAtk = new long[n + 1];
-            Arrays.fill(accAtk, 0);
-            // 残っているものについて、左から順に右に2Dの範囲で攻撃する.
-            int nowToAtk = 0;
-            while (nowToAtk != n) {
-                accAtk[nowToAtk] = nowToAtk == 0 ? 0 : accAtk[nowToAtk - 1] + accAtk[nowToAtk];
-                if (accAtk[nowToAtk] >= ph.get(nowToAtk).y) {
-                    // すでに倒れている
-                    nowToAtk++;
-                    continue;
+            int a = in.nextInt();
+            int b = in.nextInt();
+            int res = 0;
+            if (Arith.gcd(a, b) != 1) {
+                if (a == 1 || b == 1) {
+                    out.println(0);
+                    return;
+                } else {
+                    out.println(-1);
+                    return;
                 }
-                long key = ph.get(nowToAtk).x + 2 * range;
-                long time = (ph.get(nowToAtk).y - accAtk[nowToAtk] - 1 + atk) / atk;
-                int ng = -1;
-                int ok = point.length;
-                while (Math.abs(ok - ng) > 1) {
-                    int mid = (ok + ng) / 2;
-                    if (ph.get(mid).x > key) {
-                        ok = mid;
-                    } else {
-                        ng = mid;
+            }
+
+            for (int i = 1; i < a * b; i++) {
+                if (!canMake(a, b, i)) {
+                    res++;
+                }
+            }
+            out.println(res);
+
+        }
+
+        private boolean canMake(int a, int b, int key) {
+            for (int i = 0; i <= b; i++) {
+                for (int j = 0; j <= a; j++) {
+                    if (a * i + b * j == key) {
+                        return true;
                     }
                 }
-                // out.println("ok:" + ok);
-                accAtk[nowToAtk] += atk * time;
-                accAtk[ok] -= atk * time;
-                ans += time;
-                nowToAtk++;
-                // System.out.println(Arrays.toString(accAtk));
-
             }
-            out.println(ans);
-
+            return false;
         }
 
     }
 
-    static class Pair {
-        public long x;
-        public long y;
-
-        public Pair(long x, long y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public String toString() {
-            return "Pair{" +
-                    "x=" + x +
-                    ", y=" + y +
-                    '}';
+    static class Arith {
+        public static long gcd(long a, long b) {
+            return a % b == 0 ? b : gcd(b, a % b);
         }
 
     }

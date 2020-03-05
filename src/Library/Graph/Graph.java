@@ -26,6 +26,10 @@ public class Graph {
         addEdge(e.inv());
     }
 
+    public ArrayList<Edge>[] getAdj() {
+        return adj;
+    }
+
     public long[] bellmanFord(int from) {
         hasNegativeLoop = false;
         long[] res = new long[n];

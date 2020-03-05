@@ -41,3 +41,39 @@ public class LibCheck {
     }
 }
 ```
+
+## 計算量
+**10^8スケールは間に合う！**
+これは間に合う
+```java 
+package main.java.tasks;
+import Library.GridPoint;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Scanner;
+import java.io.PrintWriter;
+public class DAxisParallelRectangle {
+    public void solve(int testNumber, Scanner in, PrintWriter out) {
+        int n,k;
+        ArrayList<GridPoint> al = new ArrayList<>();
+        long res = Long.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int l = 0; l < n; l++) {
+                    for (int m = 0; m < n; m++) {
+                        long xl,xr,yl,yh,cnt;
+                        for (GridPoint gp: al){
+                            if(xl <= gp.x && gp.x <= xr && yl <= gp.y && gp.y <= yh){
+                                cnt++;
+                            }
+                        }
+                        if(cnt == k){
+                            res = Math.min(res, (xr-xl)*(yh-yl));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
