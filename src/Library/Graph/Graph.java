@@ -26,6 +26,14 @@ public class Graph {
         addEdge(e.inv());
     }
 
+    public void setVertexCost(int index, long newCost){
+        vertexCost[index] = newCost;
+    }
+
+    public void addVertexCost(int index, int costToAdd){
+        vertexCost[index] += costToAdd;
+    }
+
     public ArrayList<Edge>[] getAdj() {
         return adj;
     }

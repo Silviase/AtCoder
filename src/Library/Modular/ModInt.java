@@ -57,6 +57,10 @@ public class ModInt {
         return res;
     }
 
+    public void setMOD(long l){
+        this.MOD = (int)l;
+    }
+
 
     public long getVal() {
         return val;

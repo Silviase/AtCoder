@@ -16,51 +16,48 @@ public class Main {
         OutputStream outputStream = System.out;
         Scanner in = new Scanner(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
-        add solver = new add();
+        C solver = new C();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class add {
+    static class C {
         public void solve(int testNumber, Scanner in, PrintWriter out) {
-            int a = in.nextInt();
-            int b = in.nextInt();
+            // 尺取り
+            int n = in.nextInt();
+            int k = in.nextInt();
+            long[] a = new long[n];
             int res = 0;
-            if (Arith.gcd(a, b) != 1) {
-                if (a == 1 || b == 1) {
-                    out.println(0);
-                    return;
-                } else {
-                    out.println(-1);
+
+            for (int i = 0; i < n; i++) {
+                a[i] = in.nextInt();
+                if (a[i] == 0) {
+                    out.println(n);
                     return;
                 }
             }
 
-            for (int i = 1; i < a * b; i++) {
-                if (!canMake(a, b, i)) {
-                    res++;
+            int left = 0;
+            int right = 0;
+            long cmp = 1;
+            // [l, r)として考える
+            // 全て非零であるとしてよい、つまり単調増加
+            while (left != n && right != n) {
+                if (cmp * a[right] <= k) {
+                    cmp *= a[right];
+                    right++;
+                    res = Math.max(res, right - left);
+                } else {
+                    cmp /= a[left];
+                    left++;
+                    if (left > right) {
+                        right = left;
+                        cmp = 1;
+                    }
                 }
             }
             out.println(res);
 
-        }
-
-        private boolean canMake(int a, int b, int key) {
-            for (int i = 0; i <= b; i++) {
-                for (int j = 0; j <= a; j++) {
-                    if (a * i + b * j == key) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-    }
-
-    static class Arith {
-        public static long gcd(long a, long b) {
-            return a % b == 0 ? b : gcd(b, a % b);
         }
 
     }

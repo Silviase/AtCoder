@@ -10,11 +10,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://M:/CHelperAddition/Chelper-jars-master" />
+          <root url="file://$USER_HOME$/CHelperAddition/Chelper-jars-master" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://M:/CHelperAddition/Chelper-jars-master" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/CHelperAddition/Chelper-jars-master" recursive="false" />
       </library>
     </orderEntry>
   </component>
