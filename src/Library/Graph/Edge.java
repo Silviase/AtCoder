@@ -1,8 +1,9 @@
 package Library.Graph;
 
 public class Edge {
-    int from, to;
-    long cost;
+    public int from, to;
+    public long cost;
+
     public Edge(int to){
         this.to = to;
     }
@@ -16,18 +17,6 @@ public class Edge {
         this.from = from;
         this.to = to;
         this.cost = cost;
-    }
-
-    public long getCost() {
-        return cost;
-    }
-
-    public int getTo() {
-        return to;
-    }
-
-    public int getFrom() {
-        return from;
     }
 
     public Edge inv(){

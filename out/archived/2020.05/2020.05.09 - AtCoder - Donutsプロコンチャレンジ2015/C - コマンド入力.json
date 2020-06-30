@@ -1,0 +1,44 @@
+{
+  "name" : "C - コマンド入力",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "4\nABXY\n",
+    "output" : "2",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "13\nABABABABXBXBX\n",
+    "output" : "7",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "8\nAABBAABB\n",
+    "output" : "4",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main.java.tasks",
+  "vmArgs" : "-Xmx64M",
+  "mainClass" : "Main",
+  "taskClass" : "main.java.tasks.C",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2020.05.09",
+  "contestName" : "AtCoder - AtCoder Regular Contest 002",
+  "truncate" : true,
+  "inputClass" : "java.util.Scanner",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

@@ -1,11 +1,11 @@
-package Library.Modular;
+package Library.Arithmetic.Modular;
 
 public class ModInt {
-    long val;
-    int MOD = (int) 1e9 + 7;
+    public long val;
+    final int MOD = (int)1e9+7;
 
     public ModInt(long i) {
-        this.val = (int) ((i + MOD) % MOD);
+        this.val =  (i + MOD) % MOD;
     }
 
     public ModInt add(long l) {
@@ -25,15 +25,15 @@ public class ModInt {
     }
 
     public ModInt add(ModInt m) {
-        return new ModInt(this.val + m.getVal());
+        return new ModInt(this.val + m.val);
     }
 
     public ModInt sub(ModInt m){
-        return new ModInt(this.val - m.getVal());
+        return new ModInt(this.val - m.val);
     }
 
     public ModInt mul(ModInt m){
-        return  new ModInt(this.val * m.getVal());
+        return  new ModInt(this.val * m.val);
     }
 
     public ModInt div(ModInt m){
@@ -57,12 +57,13 @@ public class ModInt {
         return res;
     }
 
-    public void setMOD(long l){
-        this.MOD = (int)l;
+    public long getVal() {
+        return val;
     }
 
 
-    public long getVal() {
-        return val;
+    @Override
+    public String toString() {
+        return Long.toString(val);
     }
 }

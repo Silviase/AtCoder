@@ -1,11 +1,11 @@
-package Library;
+package Library.DataStructure.UnionFind;
 
-public class UnionFindTree {
-    private int[] parent;
-    private int[] height;
-    private int[] size;
+public class UnionFind {
+    protected int[] parent;
+    protected int[] height;
+    protected int[] size;
 
-    public UnionFindTree(int size) {
+    public UnionFind(int size) {
         this.parent = new int[size];
         this.height = new int[size];
         this.size = new int[size];

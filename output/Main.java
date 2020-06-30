@@ -16,48 +16,27 @@ public class Main {
         OutputStream outputStream = System.out;
         Scanner in = new Scanner(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
-        C solver = new C();
+        BModerateDifferences solver = new BModerateDifferences();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class C {
+    static class BModerateDifferences {
         public void solve(int testNumber, Scanner in, PrintWriter out) {
-            // 尺取り
-            int n = in.nextInt();
-            int k = in.nextInt();
-            long[] a = new long[n];
-            int res = 0;
-
-            for (int i = 0; i < n; i++) {
-                a[i] = in.nextInt();
-                if (a[i] == 0) {
-                    out.println(n);
+            int n = in.nextInt() - 1;
+            long a = in.nextLong();
+            long b = in.nextLong();
+            long c = in.nextLong();
+            long d = in.nextLong();
+            long dif = Math.abs(a - b);
+            for (int i = 0; i <= n; i++) {
+                // 右にi回,左にn-i回
+                if (c * i - d * (n - i) <= dif && dif <= d * i - c * (n - i)) {
+                    out.println("YES");
                     return;
                 }
             }
-
-            int left = 0;
-            int right = 0;
-            long cmp = 1;
-            // [l, r)として考える
-            // 全て非零であるとしてよい、つまり単調増加
-            while (left != n && right != n) {
-                if (cmp * a[right] <= k) {
-                    cmp *= a[right];
-                    right++;
-                    res = Math.max(res, right - left);
-                } else {
-                    cmp /= a[left];
-                    left++;
-                    if (left > right) {
-                        right = left;
-                        cmp = 1;
-                    }
-                }
-            }
-            out.println(res);
-
+            out.println("NO");
         }
 
     }

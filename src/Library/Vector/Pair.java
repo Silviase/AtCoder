@@ -1,4 +1,4 @@
-package Library;
+package Library.Vector;
 
 import java.util.Objects;
 
@@ -9,6 +9,14 @@ public class Pair<T,U> {
     public Pair(T t , U u){
         this.t = t;
         this.u = u;
+    }
+
+    public  T getT() {
+        return t;
+    }
+
+    public U getU() {
+        return u;
     }
 
     public void setT(T t){

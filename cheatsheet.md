@@ -23,12 +23,12 @@
 xor: a+b+c >= a^b^c
 等号が成立するときはbitの立っている位置がそれぞれすべて異なるとき
 
-- nextPermutation (Library.Operation)
+- nextPermutation (Library.Util.Operation)
 次の順列を生成する(このときに,引数に用いた配列は変更される)
 以下のように使用する.
 ```java
 package main.java.tasks;
-import Library.Operation;
+import Library.Util.Operation;
 import java.util.Arrays;
 public class LibCheck {
     public static void main(String[] args) {

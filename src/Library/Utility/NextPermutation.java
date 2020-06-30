@@ -1,11 +1,12 @@
-package Library;
+package Library.Utility;
 
-public class Operation {
-    public int[] nextPermutation(int[] array) {
+public class NextPermutation<T extends Comparable<T>> {
+
+    public T[] nextPermutation(T[] array) {
         int k = -1;
         int i = array.length - 2;
         while (i >= 0) {
-            if (array[i] < array[i + 1]) {
+            if (array[i].compareTo(array[i + 1]) < 0) {
                 k = i;
                 break;
             }
@@ -17,14 +18,14 @@ public class Operation {
         int l = k + 1;
         i = array.length - 1;
         while (i > k + 1) {
-            if (array[k] < array[i]) {
+            if (array[k].compareTo(array[i]) < 0) {
                 l = i;
                 break;
             }
             i--;
         }
 
-        int tmp = array[k];
+        T tmp = array[k];
         array[k] = array[l];
         array[l] = tmp;
         int[] res = new int[array.length];
@@ -36,6 +37,4 @@ public class Operation {
         }
         return array;
     }
-
-
 }

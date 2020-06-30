@@ -1,4 +1,4 @@
-package Library.Modular;
+package Library.Arithmetic.Modular;
 
 public class ModComb {
     private int size;
@@ -23,11 +23,21 @@ public class ModComb {
         }
     }
 
-    public ModInt combFac(int n, int k) {
-        if (n < k) {
-            return new ModInt(0);
-        }
+    public ModInt combination(int n, int k) {
+        if (n < k || k < 0) return new ModInt(0);
         return fac[n].mul(inv[k].getVal()).mul(inv[n - k].getVal());
+    }
+
+    public ModInt permutate(int n, int k) {
+        return fac[n].mul(inv[k]);
+    }
+
+    public ModInt getFac(int n) {
+        return fac[n];
+    }
+
+    public ModInt getInv(int n) {
+        return inv[n];
     }
 
 }
