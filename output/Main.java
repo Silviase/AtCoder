@@ -16,27 +16,31 @@ public class Main {
         OutputStream outputStream = System.out;
         Scanner in = new Scanner(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
-        BModerateDifferences solver = new BModerateDifferences();
+        CAtCoDeer solver = new CAtCoDeer();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class BModerateDifferences {
+    static class CAtCoDeer {
         public void solve(int testNumber, Scanner in, PrintWriter out) {
-            int n = in.nextInt() - 1;
-            long a = in.nextLong();
-            long b = in.nextLong();
-            long c = in.nextLong();
-            long d = in.nextLong();
-            long dif = Math.abs(a - b);
-            for (int i = 0; i <= n; i++) {
-                // 右にi回,左にn-i回
-                if (c * i - d * (n - i) <= dif && dif <= d * i - c * (n - i)) {
-                    out.println("YES");
-                    return;
-                }
+            int n = in.nextInt();
+            long x = in.nextInt();
+            long y = in.nextInt();
+            for (int i = 0; i < n - 1; i++) {
+                long t = in.nextInt();
+                long a = in.nextInt();
+                long k = Math.max(MathUtil.ceil(x, t), MathUtil.ceil(y, a));
+                x = t * k;
+                y = a * k;
             }
-            out.println("NO");
+            out.println(x + y);
+        }
+
+    }
+
+    static class MathUtil {
+        public static long ceil(long l1, long l2) {
+            return (l1 - 1 + l2) / l2;
         }
 
     }
